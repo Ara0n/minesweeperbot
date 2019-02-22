@@ -34,6 +34,25 @@ public class Generator {
 				playground.getCell(i%playground.getWidth(), i/playground.getWidth()).setMine(false);
 			}
 		}
+
+		//setting the proximity
+		for (int x=0; x<playground.getWidth(); x++) {
+			for (int y=0; y<playground.getHeight(); y++) {
+				if (!playground.getCell(x, y).isMine()) {
+					int proximity = 0;
+					if (x-1>=0 && y-1>=0 && playground.getCell(x-1,y-1).isMine()) proximity++;
+					if (x-1>=0 && playground.getCell(x-1,y).isMine()) proximity++;
+					if (x-1>=0 && y+1<playground.getHeight() && playground.getCell(x-1,y+1).isMine()) proximity++;
+					if (y-1>=0 && playground.getCell(x,y+1).isMine()) proximity++;
+					if (y+1<playground.getHeight() && playground.getCell(x,y+1).isMine()) proximity++;
+					if (x+1<playground.getWidth() && y-1>=0 && playground.getCell(x+1,y-1).isMine()) proximity++;
+					if (x+1<playground.getWidth() && playground.getCell(x+1,y).isMine()) proximity++;
+					if (x+1<playground.getWidth() && y+1<playground.getHeight() && playground.getCell(x+1,y+1).isMine()) proximity++;
+
+					playground.getCell(x, y).setProximity(proximity);
+				}
+			}
+		}
 	}
 
 }
