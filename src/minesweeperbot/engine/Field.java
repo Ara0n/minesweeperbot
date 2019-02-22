@@ -17,6 +17,11 @@ public class Field {
 		return this.field[x][y];
 	}
 
+	//default expert WinMine size
+	public Field() {
+		this(30, 16);
+	}
+
 	public Field(int width, int height) {
 		if (width <=0 || height <=0) throw new IllegalArgumentException("tables must have a size");
 
