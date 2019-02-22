@@ -5,10 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Generator {
-	//default WinMine expert settings is 99 mines
-	public static void generate(Field playground) {
-		generate(playground, 99);
-	}
 
 	public static void generate(Field playground, int mines) {
 		int height = playground.getHeight();
