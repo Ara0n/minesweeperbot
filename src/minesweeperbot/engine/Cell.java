@@ -1,6 +1,6 @@
 package minesweeperbot.engine;
 
-protected class Cell {
+public class Cell {
     private boolean revealed;
     private boolean mine;
     private boolean flagged;
