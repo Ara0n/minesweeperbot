@@ -15,10 +15,10 @@ public class Generator {
 
 		//initializing the list before shuffling
 		for (int i=0; i<mines; i++) {
-			shuffled.set(i, true);
+			shuffled.add(i,true);
 		}
 		for (int i=mines; i<size; i++) {
-			shuffled.set(i, false);
+			shuffled.add(i,false);
 		}
 
 		//shuffling the list
@@ -41,7 +41,7 @@ public class Generator {
 					if (x-1>=0 && y-1>=0 && playground.getCell(x-1,y-1).isMine()) proximity++;
 					if (x-1>=0 && playground.getCell(x-1,y).isMine()) proximity++;
 					if (x-1>=0 && y+1<height && playground.getCell(x-1,y+1).isMine()) proximity++;
-					if (y-1>=0 && playground.getCell(x,y+1).isMine()) proximity++;
+					if (y-1>=0 && playground.getCell(x,y-1).isMine()) proximity++;
 					if (y+1<height && playground.getCell(x,y+1).isMine()) proximity++;
 					if (x+1<width && y-1>=0 && playground.getCell(x+1,y-1).isMine()) proximity++;
 					if (x+1<width && playground.getCell(x+1,y).isMine()) proximity++;
