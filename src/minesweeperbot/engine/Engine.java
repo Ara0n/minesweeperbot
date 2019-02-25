@@ -55,6 +55,21 @@ public class Engine {
 			}
 		}
 		revealImp(x,y);
+		updateGameState();
+	}
+
+	private void updateGameState() {
+		boolean victory = true;
+		for (int i=0; i<width; i++) {
+			for (int j=0; j<height; j++) {
+				if (!playground.getCell(i,j).isMine() && !playground.getCell(i,j).isRevealed()) {
+					victory = false;
+				}
+			}
+		}
+		if (victory) {
+			gameState = GameState.WIN;
+		}
 	}
 
 	public void toggleFlag(int x, int y) {
@@ -77,6 +92,4 @@ public class Engine {
 	public boolean isRevealed(int x, int y) {
 		return playground.getCell(x,y).isRevealed();
 	}
-
-
 }
