@@ -30,7 +30,7 @@ public class Engine {
 	}
 
 	private void revealImp(int x, int y) {
-		if (x<0 || x>=width || y<0 || y>=height) return;
+		if (x<0 || x>=width || y<0 || y>=height || playground.getCell(x,y).isRevealed()) return;
 		playground.getCell(x,y).reveal();
 		if (playground.getCell(x,y).isMine()) {
 			gameState = GameState.LOSS;
@@ -57,7 +57,26 @@ public class Engine {
 		revealImp(x,y);
 	}
 
-	public void toggleFlag (int x, int y) {
+	public void toggleFlag(int x, int y) {
 		playground.getCell(x,y).toggleFlagged();
 	}
+
+	public GameState getGameState() {
+		return gameState;
+	}
+
+	public int getProximity(int x, int y) {
+		if (playground.getCell(x,y).isRevealed()) return playground.getCell(x,y).getProximity();
+		return -1;
+	}
+
+	public boolean isFlagged(int x, int y) {
+		return playground.getCell(x,y).isFlagged();
+	}
+
+	public boolean isRevealed(int x, int y) {
+		return playground.getCell(x,y).isRevealed();
+	}
+
+
 }
